@@ -2,13 +2,15 @@ package org.example.gestorAplicacion.servicio;
 
 import org.example.gestorAplicacion.entidades.Cliente;
 
+import java.util.List;
+
 public class GestionReserva {
     private Cliente cliente;
     private Habitacion habitacion;
     private Pago factura;
     private String ingreso;
     private String salida;
-    private Servicio serviciosAdicionales;
+    private List<Servicio> serviciosAdicionales;
 
     public void aggReserva(Habitacion habitacion){
         this.habitacion = habitacion;
@@ -16,13 +18,13 @@ public class GestionReserva {
     public void cancelarReserva(){
         //Reserva
     }
-
+    //HACER FUNCION
     public double cotizar(){
         return 3.1416d;
     }
 
     public void aggServicio(Servicio servicio){
-        this.serviciosAdicionales = servicio;
+        this.serviciosAdicionales.add(servicio);
     }
 
     public Cliente getCliente(){
@@ -50,11 +52,11 @@ public class GestionReserva {
         this.salida = salida;
     }
 
-    public Servicio getServiciosAdicionales() {
+    public List<Servicio> getServiciosAdicionales() {
         return serviciosAdicionales;
     }
 
-    public void setServiciosAdicionales(Servicio serviciosAdicionales) {
+    public void setServiciosAdicionales(List<Servicio> serviciosAdicionales) {
         this.serviciosAdicionales = serviciosAdicionales;
     }
 }

@@ -13,7 +13,7 @@ public class Hotel {
     public Hotel(){
     }
 
-    public Hotel(String nombre, String direccion, List<Double> tarifas, Servicio[] servicios, String[] comentarios) {
+    public Hotel(String nombre, String direccion, List<Double> tarifas, List<Servicio> servicios, String[] comentarios) {
         this.nombre = nombre;
         this.direccion = direccion;
         this.tarifas = tarifas;
