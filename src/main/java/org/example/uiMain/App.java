@@ -17,17 +17,17 @@ public class App {
     // Inicializacion de la App
     public static void initApp() {
         Scanner sc = new Scanner(System.in);
+        int opcion;
 
         // TODO: Datos de prueba
-        Servicio serv1 = new Servicio("Desayuno", 2.99, "01-01-2023","01-20-2023");
-        Servicio serv2 = new Servicio("Actividad tematica",6.99, "01-30-2023","02-05-2023");
+        Servicio serv1 = new Servicio("Desayuno", 2.99, "01-01-2023", "01-20-2023");
+        Servicio serv2 = new Servicio("Actividad tematica", 6.99, "01-30-2023", "02-05-2023");
         Habitacion habi1 = new Habitacion();
         Habitacion habi2 = new Habitacion();
         habitaciones.add(habi1);
         habitaciones.add(habi2);
         servicios.add(serv1);
         servicios.add(serv2);
-        Integer opcion;
         Hotel hotelObj = new Hotel();
         hotelObj.setNombre("Sol caribe");
         hotelObj.setDireccion("<direccion>");
@@ -38,12 +38,12 @@ public class App {
 
         // Inicio del Menu interactivo
         System.out.println("---- Servicio de reserva ----\n");
-        System.out.println("Escoja una opción: ");
-        System.out.println("1. Ver hoteles disponibles");
-        System.out.println("2. Realizar reserva");
-        System.out.println("0. Salir");
 
         do {
+            System.out.println("Escoja una opción: ");
+            System.out.println("1. Ver hoteles disponibles");
+            System.out.println("2. Realizar reserva");
+            System.out.println("0. Salir");
             opcion = sc.nextInt();
             switch (opcion) {
                 case 1:
@@ -55,11 +55,28 @@ public class App {
                     break;
 
                 case 2:
-                    Integer opcionReserva = sc.nextInt();
-                    switch (opcionReserva) {
-                        case 1:
+                    System.out.print("Digite el nombre del hotel a reservar: ");
+                    sc.nextLine();
+                    String opcionReserva = sc.nextLine();
 
+                    if (!opcionReserva.equals("0")){
+                        int count = 0;
+                        for (Hotel hotel : hoteles) {
+                            if (hotel.getNombre().equals(opcionReserva)) {
+                                System.out.println("---------[OK]----------");
+                                System.out.println("!! Reserva realizada !!");
+                                System.out.println("-----------------------");
+                                break;
+                            }
+                            count ++;
+                        }
+                        if (count == hoteles.size()) {
+                            System.out.println("---------[ERROR]---------");
+                            System.out.println("!! Hotel no encontrado !!");
+                            System.out.println("-------------------------\n");
+                        }
                     }
+                    break;
             }
         } while (opcion != 0);
 
