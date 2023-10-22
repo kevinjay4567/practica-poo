@@ -1,12 +1,13 @@
 package org.example.gestorAplicacion.servicio;
 
+import java.util.Arrays;
 import java.util.List;
 
 public class Hotel {
     private String nombre;
     private String direccion;
     private List<Double> tarifas;
-    private Servicio[] servicios;
+    private List<Servicio> servicios;
     private String[] comentarios;
 
     public Hotel(){
@@ -44,11 +45,11 @@ public class Hotel {
         this.tarifas = tarifas;
     }
 
-    public Servicio[] getServicios() {
+    public List<Servicio> getServicios() {
         return servicios;
     }
 
-    public void setServicios(Servicio[] servicios) {
+    public void setServicios(List<Servicio> servicios) {
         this.servicios = servicios;
     }
 
@@ -58,5 +59,13 @@ public class Hotel {
 
     public void setComentarios(String[] comentarios) {
         this.comentarios = comentarios;
+    }
+
+    @Override
+    public String toString() {
+        return "Nombre: " + getNombre() + "\n" +
+                "Direccion: " + getDireccion() + "\n" +
+                "Servicios: " + getServicios() + "\n" +
+                "Comentarios: " + Arrays.toString(getComentarios());
     }
 }

@@ -1,12 +1,14 @@
 package org.example.gestorAplicacion.servicio;
 
+import org.example.gestorAplicacion.entidades.Cliente;
+
 public class GestionReserva {
-    //private Cliente cliente;
-    //private Habitacion habitacion;
-    //private Pago factura;
+    private Cliente cliente;
+    private Habitacion habitacion;
+    private Pago factura;
     private String ingreso;
     private String salida;
-    //private Servicio serviciosAdicionales;
+    private Servicio serviciosAdicionales;
 
     public void aggReserva(Habitacion habitacion){
         this.habitacion = habitacion;
