@@ -2,6 +2,8 @@ package org.example.gestorAplicacion.servicio;
 
 import org.example.gestorAplicacion.entidades.Cliente;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class GestionReserva {
@@ -19,8 +21,16 @@ public class GestionReserva {
         //Reserva
     }
     //HACER FUNCION
-    public double cotizar(){
-        return 3.1416d;
+    public double cotizar(int[] servicios){
+        double precioCotizacion = 0;
+        if(Servicio.getServicios().isEmpty()){
+            return 0d;
+        }
+        for (int i = 0; i < servicios.length; i++) {
+            precioCotizacion += Servicio.getServicios().get(servicios[i]).getPrecio();
+        }
+        return precioCotizacion;
+
     }
 
     public void aggServicio(Servicio servicio){
@@ -58,5 +68,21 @@ public class GestionReserva {
 
     public void setServiciosAdicionales(List<Servicio> serviciosAdicionales) {
         this.serviciosAdicionales = serviciosAdicionales;
+    }
+
+    //Hacer la de ver factura
+    //public Pago verFactura(){
+      //  factura.toString();
+    //}
+
+    @Override
+    public String toString() {
+        return "GestionReserva{" +
+                "cliente=" + cliente.toString() +
+                ", habitacion=" + habitacion +
+                ", ingreso='" + ingreso + '\'' +
+                ", salida='" + salida + '\'' +
+                ", serviciosAdicionales=" + serviciosAdicionales +
+                '}';
     }
 }

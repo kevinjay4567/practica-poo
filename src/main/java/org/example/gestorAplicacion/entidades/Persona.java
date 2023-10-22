@@ -89,6 +89,6 @@ public abstract class Persona {
     }
 
     public abstract String toString();
-    public abstract void ascender();
+    //public abstract void ascender();
     public abstract String personaRol();
 }

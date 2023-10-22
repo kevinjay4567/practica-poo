@@ -20,8 +20,8 @@ public class App {
         int opcion;
 
         // TODO: Datos de prueba
-        Servicio serv1 = new Servicio("Desayuno", 2.99, "01-01-2023", "01-20-2023");
-        Servicio serv2 = new Servicio("Actividad tematica", 6.99, "01-30-2023", "02-05-2023");
+        Servicio serv1 = new Servicio("Desayuno", 2.99, 5, "01-01-2023", "01-20-2023");
+        Servicio serv2 = new Servicio("Actividad tematica", 6.99, 4, "01-30-2023", "02-05-2023");
         Habitacion habi1 = new Habitacion();
         Habitacion habi2 = new Habitacion();
         habitaciones.add(habi1);
@@ -32,7 +32,7 @@ public class App {
         hotelObj.setNombre("Sol caribe");
         hotelObj.setDireccion("<direccion>");
         hotelObj.setComentarios(new String[]{"Excelente", "Hola"});
-        hotelObj.setHabitaciones(habitaciones);
+        //hotelObj.setHabitaciones(habitaciones);
         hotelObj.setServicios(servicios);
         hoteles.add(hotelObj);
 

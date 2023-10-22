@@ -6,7 +6,6 @@ import java.util.List;
 public class Hotel {
     private String nombre;
     private String direccion;
-    private List<Habitacion> habitaciones;
     private List<Double> tarifas;
     private List<Servicio> servicios;
     private String[] comentarios;
@@ -14,10 +13,9 @@ public class Hotel {
     public Hotel(){
     }
 
-    public Hotel(String nombre, String direccion, List<Habitacion> habitaciones,List<Double> tarifas, List<Servicio> servicios, String[] comentarios) {
+    public Hotel(String nombre, String direccion, List<Double> tarifas, List<Servicio> servicios, String[] comentarios) {
         this.nombre = nombre;
         this.direccion = direccion;
-        this.habitaciones = habitaciones;
         this.tarifas = tarifas;
         this.servicios = servicios;
         this.comentarios = comentarios;
@@ -37,14 +35,6 @@ public class Hotel {
 
     public void setDireccion(String direccion) {
         this.direccion = direccion;
-    }
-
-    public List<Habitacion> getHabitaciones() {
-        return habitaciones;
-    }
-
-    public void setHabitaciones(List<Habitacion> habitaciones) {
-        this.habitaciones = habitaciones;
     }
 
     public List<Double> getTarifas() {
@@ -75,8 +65,6 @@ public class Hotel {
     public String toString() {
         return "Nombre: " + getNombre() + "\n" +
                 "Direccion: " + getDireccion() + "\n" +
-                "Habitaciones disponibles: " + getHabitaciones().size() + "\n" +
-                "Tarifas: " + getTarifas() + "\n" +
                 "Servicios: " + getServicios() + "\n" +
                 "Comentarios: " + Arrays.toString(getComentarios());
     }
