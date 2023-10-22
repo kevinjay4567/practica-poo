@@ -5,6 +5,10 @@ public class Empleado extends Persona{
     private String rol;
     private Double sueldo;
 
+    public Empleado(){
+
+    }
+
     public Empleado(String nombre, Integer edad, Character sexo, String tipo_documento, Long num_documento, String telefono, String direccion, String correo, Integer calificacion, String IDEmpleado, String rol, Double sueldo) {
         super(nombre, edad, sexo, tipo_documento, num_documento, telefono, direccion, correo);
         this.IDEmpleado = IDEmpleado;
