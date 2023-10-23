@@ -48,6 +48,10 @@ public class GestionReserva {
         this.serviciosAdicionales.add(servicio);
     }
 
+    public Integer getNochesXEstadia() {
+        return this.nochesXestadia;
+    }
+
     public Cliente getCliente(){
         return cliente;
     }
