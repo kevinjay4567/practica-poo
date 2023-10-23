@@ -7,8 +7,8 @@ import java.util.List;
 public class Hotel {
     private String nombre;
     private String direccion;
-    private List<Double> tarifas;
-    private List<Servicio> servicios;
+    private List<Double> tarifas = new ArrayList<>();
+    private List<Servicio> servicios = new ArrayList<>();
     private String[] comentarios;
 
     private List<Habitacion> habitaciones = new ArrayList<>();
@@ -62,8 +62,8 @@ public class Hotel {
         return servicios;
     }
 
-    public void setServicios(List<Servicio> servicios) {
-        this.servicios = servicios;
+    public void addServicios(Servicio servicios) {
+        this.servicios.add(servicios);
     }
 
     public String[] getComentarios() {

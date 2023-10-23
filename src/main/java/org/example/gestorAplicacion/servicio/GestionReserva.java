@@ -7,22 +7,28 @@ import java.util.Arrays;
 import java.util.List;
 
 public class GestionReserva {
+    public static List<GestionReserva> reservas = new ArrayList<>();
     private Cliente cliente;
     private Habitacion habitacion;
     private Pago factura;
     private int nochesXestadia;
 
-    //private String ingreso;
-    //private String salida;
-    private List<Servicio> serviciosAdicionales;
+    public List<Servicio> serviciosAdicionales = new ArrayList<>();
 
     private Boolean estado;
+    private Hotel hotel;
 
-    public GestionReserva(Cliente cliente, Habitacion habitacion, int nochesXestadia, Boolean estado) {
+    public GestionReserva(Cliente cliente, Habitacion habitacion, int nochesXestadia, Boolean estado, Hotel hotel) {
         this.cliente = cliente;
         this.habitacion = habitacion;
         this.nochesXestadia = nochesXestadia;
         this.estado = estado;
+        this.hotel = hotel;
+        reservas.add(this);
+    }
+
+    public Hotel getHotel() {
+        return hotel;
     }
 
     public void aggReserva(Habitacion habitacion){
@@ -62,14 +68,11 @@ public class GestionReserva {
 
     //public String getIngreso() {return ingreso;}
 
-
     //public void setIngreso(String ingreso) {this.ingreso = ingreso;}
 
     //public String getSalida() {return salida;}
 
-    //public void setSalida(String salida) {
-        //this.salida = salida;
-    //}
+    //public void setSalida(String salida) {this.salida = salida;}
 
     public List<Servicio> getServiciosAdicionales() {
         return serviciosAdicionales;
@@ -86,18 +89,21 @@ public class GestionReserva {
     public void setEstado(Boolean estado) {
         this.estado = estado;
     }
-//Hacer la de ver factura
+
+    //Hacer la de ver factura
     //public Pago verFactura(){
       //  factura.toString();
     //}
 
+
+
     @Override
     public String toString() {
-        return "GestionReserva{" +
-                "cliente=" + cliente.toString() +
-                ", habitacion=" + habitacion +
-                ", dias reservados " + nochesXestadia +
-                ", serviciosAdicionales=" + serviciosAdicionales +
-                '}';
+        return "Reservas" +'\n' +
+                "cliente:" + cliente.toString() +'\n' +
+                "habitacion:" + habitacion +'\n' +
+                "dias reservados: " + nochesXestadia +'\n' +
+                "serviciosAdicionales:" + serviciosAdicionales +'\n'+
+                "-----------------------------------------------------";
     }
 }

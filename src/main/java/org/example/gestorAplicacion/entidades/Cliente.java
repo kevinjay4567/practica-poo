@@ -101,12 +101,11 @@ public class Cliente extends Persona {
 
     @Override
     public String toString() {
-        return "Cliente{" +
-                "idCliente='" + idCliente + '\'' +
-                "Nombre= " + getNombre() +
-                "CC=" + getNum_documento() +
-                "Puntos=" + getPuntos() +
-                '}';
+        return "Cliente" +'\n' +
+                "idCliente:" + idCliente + '\n' +
+                "Nombre: " + getNombre() +'\n' +
+                "CC:" + getNum_documento() +'\n' +
+                "Puntos:" + getPuntos() +'\n';
     }
 
     @Override

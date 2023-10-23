@@ -62,11 +62,10 @@ public class Habitacion {
 
     @Override
     public String toString() {
-        return "Habitacion{" +
-                "numHabitacion='" + numHabitacion + '\'' +
-                ", precioxNoche=" + precioxNoche +
-                ", tipo=" + tipo +
-                ", ocupacion=" + ocupacion +
-                '}';
+        return "Habitacion: " +'\n' +
+                "numHabitacion: '" + numHabitacion + '\n' +
+                ", precioxNoche: " + precioxNoche +'\n' +
+                ", tipo: " + tipo +'\n' +
+                ", ocupacion: " + ocupacion +'\n';
     }
 }

@@ -14,6 +14,7 @@ public class App {
     public static List<Servicio> servicios = new LinkedList<>();
     public static List<Habitacion> habitaciones = new LinkedList<>();
     public static List<GestionReserva> reservas = new LinkedList<>();
+    private static List<Cliente> clientes;
 
     // Inicializacion de la App
     public static void initApp() {
@@ -36,8 +37,10 @@ public class App {
         hotelObj.setComentarios(new String[]{"Excelente", "Hola"});
         Hotel hotel02 = new Hotel("OnVcation", "San Luis");
         hotel02.setComentarios(new String[]{"Excelente", "Hola"});
+        hotel02.addServicios(serv1);
+        hotel02.addServicios(serv2);
         //hotelObj.setHabitaciones(habitaciones);
-        hotelObj.setServicios(servicios);
+        hotelObj.addServicios(serv1);
         hotelObj.addHabitaciones(new Habitacion(hotelObj, "101", 1, 200000.0, TipoHabitacion.INDIVIDUAL, false));
         hotelObj.addHabitaciones(new Habitacion(hotelObj, "102", 2, 200000.0, TipoHabitacion.DOBLE, true));
         hotelObj.addHabitaciones(new Habitacion(hotelObj, "103", 2, 200000.0, TipoHabitacion.DOBLE, false));
@@ -62,6 +65,7 @@ public class App {
             System.out.println("6. Gestión de equipajes");
             System.out.println("0. Salir");
             opcion = sc.nextInt();
+            List<GestionReserva> reservas = GestionReserva.reservas;
             switch (opcion) {
                 case 1:
                     System.out.println("---------- Hoteles ----------");
@@ -73,86 +77,124 @@ public class App {
                     break;
 
                 case 2:
+                    System.out.println("Escoja una opción: ");
+                    System.out.println("1. Crear reservas.");
+                    System.out.println("2. Consultar reservas.");
+                    System.out.println("3. Agregar servicios adicionales.");
+                    System.out.println("4. Eliminar reserva.");
+                    System.out.println("5. Check-Inn");
+                    System.out.println("6. Check-Out");
+                    opcion = sc.nextInt();
+                    switch (opcion) {
+                        case 1:
+                            System.out.print("Digite el nombre del hotel a reservar: ");
+                            sc.nextLine();
+                            String opcionReserva = sc.nextLine();
 
-                    System.out.print("Digite el nombre del hotel a reservar: ");
-                    sc.nextLine();
-                    String opcionReserva = sc.nextLine();
-
-                    if (!opcionReserva.equals("0")) {
-                        int count = 0;
-                        int cuentaHab = 0;
-                        for (Hotel hotel : hoteles) {
-                            if (hotel.getNombre().equals(opcionReserva)) {
-                                habitaciones = hotel.getHabitaciones();
-                                System.out.println("Seleccione la habitación deseada: ");
-                                for (Habitacion hab : habitaciones) {
-                                    if (!hab.getOcupacion()) {
-                                        System.out.println(hab);
-                                    }
-
-                                }
-                                String opcionHab = sc.nextLine();
-                                for (Habitacion habitacion : habitaciones) {
-                                    if (opcionHab.equals(habitacion.getNumHabitacion())) {
-                                        System.out.println("1. Cliente nuevo");
-                                        System.out.println("2. Cliente antiguo");
-                                        String opcioncl = sc.nextLine();
-                                        if (opcioncl.equals("1")) {
-                                            System.out.println("¿Cual es su nombre?");
-                                            String nombre = sc.nextLine();
-                                            System.out.println("Tipo de documento: ");
-                                            String tipoDoc = sc.nextLine();
-                                            System.out.println("Número de documento: ");
-                                            String numDoc = sc.nextLine();
-                                            System.out.println("Numero de telefono: ");
-                                            String numTlf = sc.nextLine();
-                                            System.out.println("Cuantas piezas de equipaje lleva: ");
-                                            int numEqui = sc.nextInt();
-                                            client = new Cliente(nombre, tipoDoc, numDoc, numTlf, "cl0" + Cliente.getClientes().size(), hotel, "Basic", numEqui, habitacion);
-                                        } else {
-                                            List<Cliente> clients = Cliente.getClientes();
-                                            System.out.println("Elija el cliente existente: ");
-                                            for (int i = 0; i < clients.size(); i++) {
-                                                System.out.println((i + 1) + ". " + clients.get(i));
+                            if (!opcionReserva.equals("0")) {
+                                int count = 0;
+                                int cuentaHab = 0;
+                                for (Hotel hotel : hoteles) {
+                                    if (hotel.getNombre().equals(opcionReserva)) {
+                                        habitaciones = hotel.getHabitaciones();
+                                        System.out.println("Seleccione la habitación deseada: ");
+                                        for (Habitacion hab : habitaciones) {
+                                            if (!hab.getOcupacion()) {
+                                                System.out.println(hab);
                                             }
-                                            int eleccion = sc.nextInt();
-                                            client = Cliente.getClientes().get(eleccion - 1);
-                                        }
-                                        System.out.println("Cuantas noches desea quedarse: ");
-                                        int noches = sc.nextInt();
 
-                                        GestionReserva reserva = new GestionReserva(client, habitacion, noches, pago);
-                                        client.realizarReserva(reserva);
-                                        System.out.println("---------[OK]----------");
-                                        System.out.println("!! Reserva realizada !!");
-                                        System.out.println("-----------------------");
+                                        }
+                                        String opcionHab = sc.nextLine();
+                                        for (Habitacion habitacion : habitaciones) {
+                                            if (opcionHab.equals(habitacion.getNumHabitacion())) {
+                                                System.out.println("1. Cliente nuevo");
+                                                System.out.println("2. Cliente antiguo");
+                                                String opcioncl = sc.nextLine();
+                                                if (opcioncl.equals("1")) {
+                                                    System.out.println("¿Cual es su nombre?");
+                                                    String nombre = sc.nextLine();
+                                                    System.out.println("Tipo de documento: ");
+                                                    String tipoDoc = sc.nextLine();
+                                                    System.out.println("Número de documento: ");
+                                                    String numDoc = sc.nextLine();
+                                                    System.out.println("Numero de telefono: ");
+                                                    String numTlf = sc.nextLine();
+                                                    System.out.println("Cuantas piezas de equipaje lleva: ");
+                                                    int numEqui = sc.nextInt();
+                                                    client = new Cliente(nombre, tipoDoc, numDoc, numTlf, "cl0" + Cliente.getClientes().size(), hotel, "Basic", numEqui, habitacion);
+                                                } else {
+                                                    List<Cliente> clients = Cliente.getClientes();
+                                                    System.out.println("Elija el cliente existente: ");
+                                                    for (int i = 0; i < clients.size(); i++) {
+                                                        System.out.println((i + 1) + ". " + clients.get(i));
+                                                    }
+                                                    int eleccion = sc.nextInt();
+                                                    client = Cliente.getClientes().get(eleccion - 1);
+                                                }
+                                                System.out.println("Cuantas noches desea quedarse: ");
+                                                int noches = sc.nextInt();
+
+                                                GestionReserva reserva = new GestionReserva(client, habitacion, noches, pago, hotel);
+                                                client.realizarReserva(reserva);
+                                                System.out.println(client.getPuntos());
+                                                System.out.println("---------[OK]----------");
+                                                System.out.println("!! Reserva realizada !!");
+                                                System.out.println("-----------------------");
+                                                break;
+                                            }
+                                            cuentaHab++;
+                                        }
+                                        if (cuentaHab == habitaciones.size()) {
+                                            System.out.println("---------[ERROR]---------");
+                                            System.out.println("!! Habitación no encontrada !!");
+                                            System.out.println("-------------------------\n");
+                                        }
                                         break;
                                     }
-                                    cuentaHab++;
+                                    count++;
                                 }
-                                if (cuentaHab == habitaciones.size()) {
+                                if (count == hoteles.size()) {
                                     System.out.println("---------[ERROR]---------");
-                                    System.out.println("!! Habitación no encontrada !!");
+                                    System.out.println("!! Hotel no encontrado !!");
                                     System.out.println("-------------------------\n");
                                 }
-
-                                break;
                             }
-                            count++;
-                        }
-                        if (count == hoteles.size()) {
-                            System.out.println("---------[ERROR]---------");
-                            System.out.println("!! Hotel no encontrado !!");
-                            System.out.println("-------------------------\n");
-                        }
+                            break;
+
+                        case 2:
+                            reservas = GestionReserva.reservas;
+                            for (GestionReserva reservass : reservas){
+                                System.out.println(reservass);
+                            }
+                            break;
+                        case 3:
+                            reservas = GestionReserva.reservas;
+                            int contador = 0;
+                            for (GestionReserva reservass : reservas){
+                                System.out.println(contador + "."+reservass);
+                            }
+                            System.out.println("Elija la reserva a modificar: ");
+                            int opcionRes = sc.nextInt();
+                            GestionReserva reservamod = reservas.get(opcionRes-1);
+                            List<Servicio> servicioss = reservamod.getHotel().getServicios();
+                            System.out.println("Servicios disponibles: ");
+                            for(Servicio servicios : servicioss){
+                                System.out.println(servicios);
+                            }
+                            System.out.println("Elija servicios a añadir: ");
+                            int opcionservicio = sc.nextInt();
+                            reservamod.aggServicio(servicioss.get(opcionservicio-1));
                     }
                     break;
+
+
                 case 3:
-                    List<Cliente> clientes = Cliente.getClientes();
+                    clientes = Cliente.getClientes();
 
                     for (Cliente cliente : clientes) {
                         System.out.println(cliente);
                     }
+
                     System.out.println("Ingrese su documento");
                     String id = sc.next();
 
@@ -171,8 +213,6 @@ public class App {
                             System.out.println("\n" + cliente.generarFactura() + "\n");
                         }
                     }
-
-
                     break;
             }
         } while (opcion != 0);
