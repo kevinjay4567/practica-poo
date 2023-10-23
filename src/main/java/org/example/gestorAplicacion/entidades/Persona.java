@@ -5,7 +5,7 @@ public abstract class Persona {
     private Integer edad;
     private Character sexo;
     private String tipo_documento;
-    private Long num_documento;
+    private String num_documento;
     private String telefono;
     private String direccion;
     private String correo;
@@ -13,7 +13,7 @@ public abstract class Persona {
     public Persona() {
     }
 
-    public Persona(String nombre, Integer edad, Character sexo, String tipo_documento, Long num_documento, String telefono, String direccion, String correo) {
+    public Persona(String nombre, Integer edad, Character sexo, String tipo_documento, String num_documento, String telefono, String direccion, String correo) {
         this.nombre = nombre;
         this.edad = edad;
         this.sexo = sexo;
@@ -22,6 +22,13 @@ public abstract class Persona {
         this.telefono = telefono;
         this.direccion = direccion;
         this.correo = correo;
+    }
+
+    public Persona(String nombre, String tipo_documento, String num_documento, String telefono) {
+        this.nombre = nombre;
+        this.tipo_documento = tipo_documento;
+        this.num_documento = num_documento;
+        this.telefono = telefono;
     }
 
     public String getNombre() {
@@ -56,11 +63,11 @@ public abstract class Persona {
         this.tipo_documento = tipo_documento;
     }
 
-    public Long getNum_documento() {
+    public String getNum_documento() {
         return num_documento;
     }
 
-    public void setNum_documento(Long num_documento) {
+    public void setNum_documento(String num_documento) {
         this.num_documento = num_documento;
     }
 

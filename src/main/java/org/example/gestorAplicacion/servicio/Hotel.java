@@ -1,5 +1,6 @@
 package org.example.gestorAplicacion.servicio;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -10,7 +11,18 @@ public class Hotel {
     private List<Servicio> servicios;
     private String[] comentarios;
 
+    private List<Habitacion> habitaciones = new ArrayList<>();
+
+    private static List <Hotel> hoteles = new ArrayList<>();
+
     public Hotel(){
+        Hotel.hoteles.add(this);
+    }
+
+    public Hotel(String nombre, String direccion) {
+        this.nombre = nombre;
+        this.direccion = direccion;
+        Hotel.hoteles.add(this);
     }
 
     public Hotel(String nombre, String direccion, List<Double> tarifas, List<Servicio> servicios, String[] comentarios) {
@@ -19,6 +31,7 @@ public class Hotel {
         this.tarifas = tarifas;
         this.servicios = servicios;
         this.comentarios = comentarios;
+        Hotel.hoteles.add(this);
     }
 
     public String getNombre() {
@@ -59,6 +72,22 @@ public class Hotel {
 
     public void setComentarios(String[] comentarios) {
         this.comentarios = comentarios;
+    }
+
+    public List<Habitacion> getHabitaciones() {
+        return habitaciones;
+    }
+
+    public void addHabitaciones(Habitacion hab){
+        habitaciones.add(hab);
+    }
+
+    public static List<Hotel> getHoteles() {
+        return hoteles;
+    }
+
+    public static void addHoteles(Hotel hotel) {
+        Hotel.hoteles.add(hotel);
     }
 
     @Override

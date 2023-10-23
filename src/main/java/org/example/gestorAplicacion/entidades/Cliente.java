@@ -1,7 +1,9 @@
 package org.example.gestorAplicacion.entidades;
 import org.example.gestorAplicacion.servicio.*;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
 
 
 public class Cliente extends Persona {
@@ -10,25 +12,28 @@ public class Cliente extends Persona {
     private int puntos = 0;
     private Habitacion habitacion;
 
-    private String Membresia;
+    private String membresia;
     //enum membresia
     private int equipaje;
 
     private LinkedList<GestionReserva> historial = new LinkedList<>();
     private String historiaComentario;
     private GestionReserva reserva;
+    private static List<Cliente> clientes = new ArrayList<>();
 
-    public Cliente(String idCliente, Hotel hotel, int puntos, Habitacion habitacion, String membresia, int equipaje) {
+    public Cliente(String nombre, String tipo_cedula, String numero_cedula, String telefono, String idCliente, Hotel hotel, String membresia, int equipaje) {
+        super(nombre, tipo_cedula, numero_cedula, telefono);
         this.idCliente = idCliente;
         this.hotel = hotel;
-        this.puntos = puntos;
-        this.habitacion = habitacion;
-        Membresia = membresia;
+        this.puntos = 0;
+        this.membresia = membresia;
         this.equipaje = equipaje;
+        Cliente.addClientes(this);
     }
 
-    public void solicitarServicio(Servicio servicio){
-        this.reserva.aggServicio(servicio);
+    public void solicitarServicio(int servicio){
+        //Se hará con la posición del servicio en la lista de ellos
+        this.reserva.aggServicio(Servicio.getServicios().get(servicio));
         this.puntos++;
     }
     public void cancelarServicio(int servicio){
@@ -56,18 +61,24 @@ public class Cliente extends Persona {
         }
         historial.removeLast();
         return true;
-
     }
 
-    public double verFactura(){
+    //Mostrar factura en la interfaz
 
-        return 3.14d;
+    public void pagarFactura(){
+        reserva.setEstado(true);
     }
-
-
 
     public int getPuntos(){
         return puntos;
+    }
+
+    public static List<Cliente> getClientes() {
+        return clientes;
+    }
+
+    public static void addClientes(Cliente cliente) {
+        Cliente.clientes.add(cliente);
     }
 
     @Override

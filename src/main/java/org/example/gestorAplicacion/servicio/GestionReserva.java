@@ -10,9 +10,20 @@ public class GestionReserva {
     private Cliente cliente;
     private Habitacion habitacion;
     private Pago factura;
-    private String ingreso;
-    private String salida;
+    private int nochesXestadia;
+
+    //private String ingreso;
+    //private String salida;
     private List<Servicio> serviciosAdicionales;
+
+    private Boolean estado;
+
+    public GestionReserva(Cliente cliente, Habitacion habitacion, int nochesXestadia, Boolean estado) {
+        this.cliente = cliente;
+        this.habitacion = habitacion;
+        this.nochesXestadia = nochesXestadia;
+        this.estado = estado;
+    }
 
     public void aggReserva(Habitacion habitacion){
         this.habitacion = habitacion;
@@ -45,22 +56,16 @@ public class GestionReserva {
         return habitacion;
     }
 
-    public String getIngreso() {
-        return ingreso;
-    }
+    //public String getIngreso() {return ingreso;}
 
 
-    public void setIngreso(String ingreso) {
-        this.ingreso = ingreso;
-    }
+    //public void setIngreso(String ingreso) {this.ingreso = ingreso;}
 
-    public String getSalida() {
-        return salida;
-    }
+    //public String getSalida() {return salida;}
 
-    public void setSalida(String salida) {
-        this.salida = salida;
-    }
+    //public void setSalida(String salida) {
+        //this.salida = salida;
+    //}
 
     public List<Servicio> getServiciosAdicionales() {
         return serviciosAdicionales;
@@ -70,7 +75,14 @@ public class GestionReserva {
         this.serviciosAdicionales = serviciosAdicionales;
     }
 
-    //Hacer la de ver factura
+    public Boolean getEstado() {
+        return estado;
+    }
+
+    public void setEstado(Boolean estado) {
+        this.estado = estado;
+    }
+//Hacer la de ver factura
     //public Pago verFactura(){
       //  factura.toString();
     //}
@@ -80,8 +92,7 @@ public class GestionReserva {
         return "GestionReserva{" +
                 "cliente=" + cliente.toString() +
                 ", habitacion=" + habitacion +
-                ", ingreso='" + ingreso + '\'' +
-                ", salida='" + salida + '\'' +
+                ", dias reservados " + nochesXestadia +
                 ", serviciosAdicionales=" + serviciosAdicionales +
                 '}';
     }

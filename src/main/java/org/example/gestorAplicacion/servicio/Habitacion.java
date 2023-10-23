@@ -9,6 +9,15 @@ public class Habitacion {
     private TipoHabitacion tipo;
     private Boolean ocupacion;
 
+    public Habitacion(Hotel hotel, String numHabitacion, int capacidad, double precioxNoche, TipoHabitacion tipo, Boolean ocupacion) {
+        this.hotel = hotel;
+        this.numHabitacion = numHabitacion;
+        this.capacidad = capacidad;
+        this.precioxNoche = precioxNoche;
+        this.tipo = tipo;
+        this.ocupacion = ocupacion;
+    }
+
     public void ocupar(){
         ocupacion = true;
     }
@@ -49,5 +58,15 @@ public class Habitacion {
 
     public void setTipo(TipoHabitacion tipo) {
         this.tipo = tipo;
+    }
+
+    @Override
+    public String toString() {
+        return "Habitacion{" +
+                "numHabitacion='" + numHabitacion + '\'' +
+                ", precioxNoche=" + precioxNoche +
+                ", tipo=" + tipo +
+                ", ocupacion=" + ocupacion +
+                '}';
     }
 }
