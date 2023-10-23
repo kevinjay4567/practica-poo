@@ -2,7 +2,9 @@ package org.example.gestorAplicacion.entidades;
 
 import org.example.gestorAplicacion.servicio.*;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -66,16 +68,11 @@ public class Cliente extends Persona {
         return true;
     }
 
+    // Devuelve la factura con el total a pagar y la fecha de la creacion
     public Pago generarFactura() {
-        Pago pago = new Pago();
         double pagoReserva = this.habitacion.getPrecioxNoche() * this.reserva.getNochesXEstadia();
-        pago.setTotal(pagoReserva);
-        pago.setServicios(this.reserva.getServiciosAdicionales());
-        pago.setFecha_pago("23-10-2023");
-        return pago;
+        return new Pago(pagoReserva, this.reserva.getServiciosAdicionales(), LocalDate.now().toString());
     }
-
-    //Mostrar factura en la interfaz
 
     public void pagarFactura() {
         reserva.setEstado(true);

@@ -1,14 +1,14 @@
 package org.example.gestorAplicacion.servicio;
 
-import java.util.LinkedList;
 import java.util.List;
 
 public class Pago {
     private Double total;
     private List<Servicio> servicios;
     private String fecha_pago;
+    private static final double IVA = 0.19;
 
-    public Pago(){
+    public Pago() {
     }
 
     public Pago(Double total, List<Servicio> servicios, String fecha_pago) {
@@ -18,18 +18,19 @@ public class Pago {
     }
 
     public Double getTotal() {
-        return total;
+        double precioIva = total * IVA;
+        return total + precioIva;
     }
 
     public void setTotal(Double total) {
         this.total = total;
     }
 
-    public List<Servicio> getTipo_servicio() {
+    public List<Servicio> getServicios() {
         return servicios;
     }
 
-    public void setServicios (List<Servicio> servicios) {
+    public void setServicios(List<Servicio> servicios) {
         this.servicios = servicios;
     }
 
@@ -44,9 +45,9 @@ public class Pago {
     @Override
     public String toString() {
         return "Pago: { \n" +
-                "Servicios Adicionales: " + servicios + "\n" +
-                "Total: " + total + "\n" +
-                "Fecha de pago: '" + fecha_pago + "'\n" +
+                "Servicios Adicionales: " + getServicios() + "\n" +
+                "Total: " + getTotal() + "\n" +
+                "Fecha de pago: '" + getFecha_pago() + "'\n" +
                 "}";
     }
 }
