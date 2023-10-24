@@ -8,6 +8,8 @@ public class Pago {
     private String fecha_pago;
     private static final double IVA = 0.19;
 
+    private double descuentoPuntos = 0;
+
     public Pago() {
     }
 
@@ -26,7 +28,8 @@ public class Pago {
         for (Servicio servicio: servicios) {
             precioServicios += servicio.getPrecio();
         }
-        return total + precioIva + precioServicios;
+
+        return total + precioIva + precioServicios - getDescuentoPuntos();
 
     }
 
@@ -50,12 +53,21 @@ public class Pago {
         this.fecha_pago = fecha_pago;
     }
 
+    public double getDescuentoPuntos() {
+        return descuentoPuntos;
+    }
+
+    public void setDescuentoPuntos(float descuento){
+        descuentoPuntos = total * (descuento/1000);
+    }
+
     @Override
     public String toString() {
         return "Pago: { \n" +
                 "Estadia: " + total + "\n" +
                 "Servicios Adicionales: " + getServicios() + "\n" +
                 "IVA: " + total * IVA + "\n" +
+                "Descuento Puntos: "+ getDescuentoPuntos() + "\n" +
                 "Total: " + getTotal() + "\n" +
                 "Fecha de pago: '" + getFecha_pago() + "'\n" +
                 "}";

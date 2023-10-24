@@ -78,7 +78,9 @@ public class Cliente extends Persona implements Serializable {
     // Devuelve la factura con el total a pagar y la fecha de la creacion
     public Pago generarFactura() {
         double pagoReserva = this.habitacion.getPrecioxNoche() * this.reserva.getNochesXEstadia();
-        return new Pago(pagoReserva, this.reserva.getServiciosAdicionales(), LocalDate.now().toString());
+        Pago pago = new Pago(pagoReserva, this.reserva.getServiciosAdicionales(), LocalDate.now().toString());
+        pago.setDescuentoPuntos(this.getPuntos());
+        return pago;
     }
 
     public void pagarFactura() {
