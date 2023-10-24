@@ -1,6 +1,8 @@
 package org.example.gestorAplicacion.entidades;
 
-public abstract class Persona {
+import java.io.Serializable;
+
+public abstract class Persona implements Serializable {
     private String nombre;
     private Integer edad;
     private Character sexo;
@@ -64,7 +66,7 @@ public abstract class Persona {
     }
 
     public String getNum_documento() {
-        return num_documento;
+        return this.num_documento;
     }
 
     public void setNum_documento(String num_documento) {

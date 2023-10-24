@@ -19,7 +19,15 @@ public class Pago {
 
     public Double getTotal() {
         double precioIva = total * IVA;
-        return total + precioIva;
+        if (servicios.isEmpty()) {
+            return total + precioIva;
+        }
+        double precioServicios = 0;
+        for (Servicio servicio: servicios) {
+            precioServicios += servicio.getPrecio();
+        }
+        return total + precioIva + precioServicios;
+
     }
 
     public void setTotal(Double total) {
@@ -45,7 +53,9 @@ public class Pago {
     @Override
     public String toString() {
         return "Pago: { \n" +
+                "Estadia: " + total + "\n" +
                 "Servicios Adicionales: " + getServicios() + "\n" +
+                "IVA: " + total * IVA + "\n" +
                 "Total: " + getTotal() + "\n" +
                 "Fecha de pago: '" + getFecha_pago() + "'\n" +
                 "}";

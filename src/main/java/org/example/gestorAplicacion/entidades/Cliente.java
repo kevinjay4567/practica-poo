@@ -2,6 +2,7 @@ package org.example.gestorAplicacion.entidades;
 
 import org.example.gestorAplicacion.servicio.*;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
@@ -9,7 +10,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 
-public class Cliente extends Persona {
+public class Cliente extends Persona implements Serializable {
     private String idCliente;
     private Hotel hotel;
     private int puntos = 0;
@@ -22,7 +23,7 @@ public class Cliente extends Persona {
     private LinkedList<GestionReserva> historial = new LinkedList<>();
     private String historiaComentario;
     private GestionReserva reserva;
-    private static List<Cliente> clientes = new ArrayList<>();
+    private static List<Cliente> clientes = new LinkedList<>();
 
     public Cliente(String nombre, String tipo_cedula, String numero_cedula, String telefono, String idCliente, Hotel hotel, String membresia, int equipaje, Habitacion habitacion) {
         super(nombre, tipo_cedula, numero_cedula, telefono);
@@ -45,6 +46,10 @@ public class Cliente extends Persona {
         //Se hará con la posición del servicio en la lista de ellos
         this.reserva.getServiciosAdicionales().remove(servicio);
         this.puntos--;
+    }
+
+    public static void cargarClientes(List<Cliente> cargaClientes) {
+        clientes = cargaClientes;
     }
 
     public void realizarReserva(GestionReserva reserva) {
