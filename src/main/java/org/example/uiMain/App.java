@@ -11,9 +11,7 @@ public class App {
 
     public static List<Hotel> hoteles = Hotel.getHoteles();
     public static List<Servicio> servicios = new LinkedList<>();
-    public static List<Habitacion> habitaciones = new LinkedList<>();
-    public static List<GestionReserva> reservas = new LinkedList<>();
-    private static List<Cliente> clientes;
+    public static List<Cliente> clientes = new LinkedList<>();
 
     // Inicializacion de la App
     public static void initApp() {
@@ -22,19 +20,38 @@ public class App {
         Cliente client;
         Boolean pago = false;
         Habitacion habitacion = new Habitacion();
-        // TODO: Datos de prueba
-        Servicio serv1 = new Servicio("Desayuno", 2.99, 5, "01-01-2023", "01-20-2023");
+
+        /*Servicio serv1 = new Servicio("Desayuno", 2.99, 5, "01-01-2023", "01-20-2023");
         Servicio serv2 = new Servicio("Actividad tematica", 6.99, 4, "01-30-2023", "02-05-2023");
 
         //habitaciones.add(habi1);
         //habitaciones.add(habi2);
         servicios.add(serv1);
         servicios.add(serv2);
-        //Cliente cl001 = new Cliente("Omar", "cc", "111421412", "323242442", "cl001", hotelObj, "Gold", 2);
-        //GestionReserva gr001 = new GestionReserva(cl001, h)
+        Hotel hotelObj = new Hotel();
+        hotelObj.setNombre("Sol caribe");
+        hotelObj.setDireccion("<direccion>");
+        hotelObj.addComentario("Comentario 1", 1);
+        Hotel hotel02 = new Hotel("OnVcation", "San Luis");
+        hotel02.addComentario("Comentario 2", 10);
+        //hotelObj.setHabitaciones(habitaciones);
+        hotelObj.addServicios(serv1);
+        hotelObj.addServicios(serv2);
+        hotel02.addServicios(serv1);
+        Habitacion habi2 = new Habitacion(hotelObj, "102", 2, 200000.0, TipoHabitacion.DOBLE, true);
+        hotelObj.addHabitaciones(new Habitacion(hotelObj,"101", 1, 200000.0, TipoHabitacion.INDIVIDUAL, false));
+        hotelObj.addHabitaciones(habi2);
+        hotelObj.addHabitaciones(new Habitacion(hotelObj, "103", 2, 200000.0, TipoHabitacion.DOBLE, false));
+        hotelObj.addHabitaciones(new Habitacion(hotelObj,"104", 2, 200000.0, TipoHabitacion.MATRIMONIAL, true));
+        hotelObj.addHabitaciones(new Habitacion(hotelObj, "105", 1, 200000.0, TipoHabitacion.INDIVIDUAL, true));
+        hotelObj.addHabitaciones(new Habitacion(hotelObj, "106", 2, 200000.0, TipoHabitacion.DOBLE, false));
+        hotelObj.addHabitaciones(new Habitacion(hotelObj,"107", 3, 200000.0, TipoHabitacion.SUITE, true));
+        hotelObj.addHabitaciones(new Habitacion(hotelObj,"108", 2, 200000.0, TipoHabitacion.DOBLE, true));
+
+        Cliente cl001 = new Cliente("Omar", "cc", "111421412", "323242442","cl001", hotelObj, "Gold", 2, habi2);*/
+
         // Inicio del Menu interactivo
         System.out.println("---- Servicio de reserva ----\n");
-
         do {
             System.out.println("Escoja una opción: ");
             System.out.println("1. Ver hoteles disponibles");
@@ -79,7 +96,7 @@ public class App {
                                         Boolean habCorrecta = false;
 
                                         do {
-                                            habitaciones = hotel.getHabitaciones();
+                                            List<Habitacion> habitaciones = hotel.getHabitaciones();
                                             System.out.println("Seleccione la habitación deseada: ");
                                             for (Habitacion hab : habitaciones) {
                                                 if (!hab.getOcupacion()) {

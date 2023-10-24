@@ -10,15 +10,15 @@ public class Hotel implements Serializable {
     private List<Double> tarifas = new ArrayList<>();
     private List<Servicio> servicios = new ArrayList<>();
     private List<String> comentarios = new ArrayList<>();
-    private float calificacion=0;
+    private float calificacion = 0;
 
-    private int calificaciones=0;
+    private int calificaciones = 0;
 
     private List<Habitacion> habitaciones = new ArrayList<>();
 
-    private static List <Hotel> hoteles = new ArrayList<>();
+    private static List<Hotel> hoteles = new ArrayList<>();
 
-    public Hotel(){
+    public Hotel() {
         Hotel.hoteles.add(this);
     }
 
@@ -48,6 +48,10 @@ public class Hotel implements Serializable {
         return direccion;
     }
 
+    public static void cargarHoteles(List<Hotel> cargaHoteles) {
+        hoteles = cargaHoteles;
+    }
+
     public void setDireccion(String direccion) {
         this.direccion = direccion;
     }
@@ -75,16 +79,16 @@ public class Hotel implements Serializable {
     public float addComentario(String comentario, int calificacion) {
 
         this.comentarios.add(comentario);
-        this.calificacion+=calificacion;
+        this.calificacion += calificacion;
         this.calificaciones++;
-        return this.calificacion/calificaciones;
+        return this.calificacion / calificaciones;
     }
 
     public List<Habitacion> getHabitaciones() {
         return habitaciones;
     }
 
-    public void addHabitaciones(Habitacion hab){
+    public void addHabitaciones(Habitacion hab) {
         habitaciones.add(hab);
     }
 
@@ -102,7 +106,7 @@ public class Hotel implements Serializable {
                 "Nombre: " + getNombre() + "\n" +
                 "Direccion: " + getDireccion() + "\n" +
                 "Servicios: " + getServicios() + "\n" +
-                "Comentarios: " + getComentarios()+ "\n"
-            + "-------------------------------";
+                "Comentarios: " + getComentarios() + "\n"
+                + "-------------------------------";
     }
 }

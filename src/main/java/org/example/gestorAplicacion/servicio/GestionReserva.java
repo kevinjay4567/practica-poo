@@ -2,11 +2,12 @@ package org.example.gestorAplicacion.servicio;
 
 import org.example.gestorAplicacion.entidades.Cliente;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class GestionReserva {
+public class GestionReserva implements Serializable {
     public static List<GestionReserva> reservas = new ArrayList<>();
     private Cliente cliente;
     private Habitacion habitacion;
