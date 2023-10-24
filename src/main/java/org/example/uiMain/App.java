@@ -293,6 +293,7 @@ public class App {
                     Hotel hotelaCalificar = Hotel.getHoteles().get(optHotel-1);
                     System.out.println("Escriba un comentario para el hotel: ");
                     String coment;
+                    sc.nextLine();
                     coment = sc.nextLine();
                     System.out.println("Califique del 1 al 10 su experiencia: ");
                     int calificacion = sc.nextInt();
