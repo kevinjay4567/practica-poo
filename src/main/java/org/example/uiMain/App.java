@@ -291,9 +291,9 @@ public class App {
                     System.out.println("Elija un hotel para agregar reseña: \n");
                     int optHotel = sc.nextInt();
                     Hotel hotelaCalificar = Hotel.getHoteles().get(optHotel-1);
-                    System.out.println("Escriba un comentario para el hotel: \n");
-                    String coment = sc.nextLine();
-                    sc.nextLine();
+                    System.out.println("Escriba un comentario para el hotel: ");
+                    String coment;
+                    coment = sc.nextLine();
                     System.out.println("Califique del 1 al 10 su experiencia: ");
                     int calificacion = sc.nextInt();
                     float calificacionHotel = hotelaCalificar.addComentario(coment, calificacion);
