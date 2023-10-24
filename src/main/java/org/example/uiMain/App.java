@@ -309,10 +309,12 @@ public class App {
                     System.out.println("Elija un cliente para redimir sus puntos, o 0 para salir.");
                     int optClPts = sc.nextInt();
                     if(optClPts != 0){
-                        client = clientes.get(optClPts);
-                        puntos = client.getPuntos();
+                        client = clientes.get(optClPts-1);
+                        client.redimirPuntos();
 
                     }
+
+                    break;
             }
         } while (opcion != 0);
 

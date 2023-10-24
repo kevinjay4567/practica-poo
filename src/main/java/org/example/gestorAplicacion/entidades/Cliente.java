@@ -19,11 +19,13 @@ public class Cliente extends Persona implements Serializable {
     private String membresia;
     //enum membresia
     private int equipaje;
+    private boolean puntosRedimidos = false;
 
     private LinkedList<GestionReserva> historial = new LinkedList<>();
     private String historiaComentario;
     private GestionReserva reserva;
     private static List<Cliente> clientes = new LinkedList<>();
+    private Pago pagoCliente;
 
     public Cliente(String nombre, String tipo_cedula, String numero_cedula, String telefono, String idCliente, Hotel hotel, String membresia, int equipaje, Habitacion habitacion) {
         super(nombre, tipo_cedula, numero_cedula, telefono);
@@ -78,11 +80,18 @@ public class Cliente extends Persona implements Serializable {
     // Devuelve la factura con el total a pagar y la fecha de la creacion
     public Pago generarFactura() {
         double pagoReserva = this.habitacion.getPrecioxNoche() * this.reserva.getNochesXEstadia();
-        Pago pago = new Pago(pagoReserva, this.reserva.getServiciosAdicionales(), LocalDate.now().toString());
-        pago.setDescuentoPuntos(this.getPuntos());
-        return pago;
+        pagoCliente = new Pago(pagoReserva, this.reserva.getServiciosAdicionales(), LocalDate.now().toString());
+        if(puntosRedimidos) {
+            pagoCliente.setDescuentoPuntos(this.getPuntos());
+        }
+
+        return pagoCliente;
     }
 
+    public void redimirPuntos(){
+        puntosRedimidos=true;
+
+    }
     public void pagarFactura() {
         reserva.setEstado(true);
     }
