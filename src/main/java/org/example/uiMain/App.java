@@ -230,7 +230,26 @@ public class App {
                             opcionRes = sc.nextInt();
                             GestionReserva reserCheckIn = reservas.get(opcionRes-1);
                             reserCheckIn.getHabitacion().ocupar();
+                            System.out.println("---------[OK]----------");
+                            System.out.println(" !! CheckIn Listo !!");
+                            System.out.println("-----------------------");
 
+                            break;
+                        case 6:
+                            reservas = GestionReserva.reservas;
+                            contador = 0;
+                            for (GestionReserva reservass : reservas){
+                                System.out.println(contador + "."+reservass);
+                                contador++;
+                            }
+                            System.out.println("Elija la reserva para realizar check-out: ");
+                            opcionRes = sc.nextInt();
+                            GestionReserva reserCheckout = reservas.get(opcionRes-1);
+                            reserCheckIn.getHabitacion().desocupar();
+                            reserCheckout.borrarReserva();
+                            System.out.println("---------[OK]----------");
+                            System.out.println(" !! CheckOut Listo !!");
+                            System.out.println("-----------------------");
 
                     }
                     break;
