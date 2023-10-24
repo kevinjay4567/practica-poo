@@ -34,9 +34,9 @@ public class App {
         Hotel hotelObj = new Hotel();
         hotelObj.setNombre("Sol caribe");
         hotelObj.setDireccion("<direccion>");
-        hotelObj.setComentarios(new String[]{"Excelente", "Hola"});
+        //hotelObj.setComentarios(new String[]{"Excelente", "Hola"});
         Hotel hotel02 = new Hotel("OnVcation", "San Luis");
-        hotel02.setComentarios(new String[]{"Excelente", "Hola"});
+        //hotel02.setComentarios(new String[]{"Excelente", "Hola"});
         hotel02.addServicios(serv1);
         hotel02.addServicios(serv2);
         //hotelObj.setHabitaciones(habitaciones);
@@ -245,12 +245,13 @@ public class App {
                             System.out.println("Elija la reserva para realizar check-out: ");
                             opcionRes = sc.nextInt();
                             GestionReserva reserCheckout = reservas.get(opcionRes-1);
-                            reserCheckIn.getHabitacion().desocupar();
+                            reserCheckout.getHabitacion().desocupar();
                             reserCheckout.borrarReserva();
                             System.out.println("---------[OK]----------");
                             System.out.println(" !! CheckOut Listo !!");
                             System.out.println("-----------------------");
 
+                            break;
                     }
                     break;
 
@@ -281,6 +282,22 @@ public class App {
                         }
                     }
                     break;
+                case 4:
+                    int count = 1;
+                    for (Hotel hotel : hoteles) {
+                        System.out.println("["+count+"]\n"+hotel);
+                        count++;
+                    }
+                    System.out.println("Elija un hotel para agregar reseña: \n");
+                    int optHotel = sc.nextInt();
+                    Hotel hotelaCalificar = Hotel.getHoteles().get(optHotel-1);
+                    System.out.println("Escriba un comentario para el hotel: \n");
+                    String coment = sc.nextLine();
+                    sc.nextLine();
+                    System.out.println("Califique del 1 al 10 su experiencia: ");
+                    int calificacion = sc.nextInt();
+                    float calificacionHotel = hotelaCalificar.addComentario(coment, calificacion);
+                    System.out.println("Califiación total del hotel: " + calificacionHotel);
             }
         } while (opcion != 0);
 
