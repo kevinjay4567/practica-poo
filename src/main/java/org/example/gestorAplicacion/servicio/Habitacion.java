@@ -9,6 +9,9 @@ public class Habitacion {
     private TipoHabitacion tipo;
     private Boolean ocupacion;
 
+    public Habitacion() {
+    }
+
     public Habitacion(Hotel hotel, String numHabitacion, int capacidad, double precioxNoche, TipoHabitacion tipo, Boolean ocupacion) {
         this.hotel = hotel;
         this.numHabitacion = numHabitacion;

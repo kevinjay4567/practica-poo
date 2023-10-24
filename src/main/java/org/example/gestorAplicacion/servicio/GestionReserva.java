@@ -95,7 +95,9 @@ public class GestionReserva {
       //  factura.toString();
     //}
 
-
+public void borrarReserva(){
+        GestionReserva.reservas.remove(this);
+}
 
     @Override
     public String toString() {

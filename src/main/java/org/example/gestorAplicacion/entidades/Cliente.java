@@ -58,13 +58,15 @@ public class Cliente extends Persona {
         return this.reserva.toString();
     }
 
-    public Boolean cancelarReserva() {
+    public Boolean cancelarReserva(GestionReserva reserva) {
         //Por el booleano se determina la respuesta en la ui
-        reserva = null;
         if (this.historial.isEmpty()) {
             return false;
         }
+        reserva.borrarReserva();
         historial.removeLast();
+        this.reserva = null;
+        puntos-=20;
         return true;
     }
 
