@@ -10,7 +10,10 @@ public class Hotel implements Serializable {
     private String direccion;
     private List<Double> tarifas = new ArrayList<>();
     private List<Servicio> servicios = new ArrayList<>();
-    private String[] comentarios;
+    private List<String> comentarios = new ArrayList<>();
+    private float calificacion=0;
+
+    private int calificaciones=0;
 
     private List<Habitacion> habitaciones = new ArrayList<>();
 
@@ -31,7 +34,6 @@ public class Hotel implements Serializable {
         this.direccion = direccion;
         this.tarifas = tarifas;
         this.servicios = servicios;
-        this.comentarios = comentarios;
         Hotel.hoteles.add(this);
     }
 
@@ -67,12 +69,16 @@ public class Hotel implements Serializable {
         this.servicios.add(servicios);
     }
 
-    public String[] getComentarios() {
+    public List<String> getComentarios() {
         return comentarios;
     }
 
-    public void setComentarios(String[] comentarios) {
-        this.comentarios = comentarios;
+    public float addComentario(String comentario, int calificacion) {
+
+        this.comentarios.add(comentario);
+        this.calificacion+=calificacion;
+        this.calificaciones++;
+        return this.calificacion/calificaciones;
     }
 
     public List<Habitacion> getHabitaciones() {
@@ -93,9 +99,11 @@ public class Hotel implements Serializable {
 
     @Override
     public String toString() {
-        return "Nombre: " + getNombre() + "\n" +
+        return "------------------------------" + "\n" +
+                "Nombre: " + getNombre() + "\n" +
                 "Direccion: " + getDireccion() + "\n" +
                 "Servicios: " + getServicios() + "\n" +
-                "Comentarios: " + Arrays.toString(getComentarios());
+                "Comentarios: " + getComentarios()+ "\n"
+            + "-------------------------------";
     }
 }
