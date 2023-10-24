@@ -1,7 +1,9 @@
 package org.example.gestorAplicacion.servicio;
 
 
-public class Habitacion {
+import java.io.Serializable;
+
+public class Habitacion implements Serializable {
     private Hotel hotel;
     private String numHabitacion;
     private int capacidad;

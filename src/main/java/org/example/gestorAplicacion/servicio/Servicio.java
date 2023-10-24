@@ -1,8 +1,9 @@
 package org.example.gestorAplicacion.servicio;
 
+import java.io.Serializable;
 import java.util.LinkedList;
 
-public class Servicio {
+public class Servicio implements Serializable {
     private String nombre;
     private Double precio;
     private String hora_inicio;

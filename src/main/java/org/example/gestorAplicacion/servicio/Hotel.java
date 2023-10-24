@@ -2,7 +2,6 @@ package org.example.gestorAplicacion.servicio;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class Hotel implements Serializable {
