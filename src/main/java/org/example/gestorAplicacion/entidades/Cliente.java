@@ -88,6 +88,10 @@ public class Cliente extends Persona implements Serializable {
         return pagoCliente;
     }
 
+    public Pago getPagoCliente() {
+        return this.pagoCliente;
+    }
+
     public void redimirPuntos(){
         puntosRedimidos=true;
 

@@ -315,6 +315,33 @@ public class App {
                     }
 
                     break;
+
+                case 6:
+                    System.out.println("Desea solicitar servicio de equipaje? [y/n]: ");
+
+
+                    String option = sc.next();
+                    switch (option) {
+                        case "y":
+                            List<Cliente> clientes = Cliente.getClientes();
+                            if (!clientes.isEmpty()) {
+                                System.out.println(Cliente.getClientes());
+                                String idClient = sc.next();
+                                for (Cliente clienteServ: clientes) {
+                                    if (idClient.equals(clienteServ.getNum_documento())) {
+                                        Servicio serv = new Servicio("Servicio equipaje", 5.99);
+                                        System.out.println(clienteServ.getPagoCliente().agregarServicio(serv));
+                                    }
+
+                                }
+                            }
+                            else System.out.println("No hay clientes registrados");
+                            break;
+
+                        case "n":
+                            break;
+                    }
+                    break;
             }
         } while (opcion != 0);
 

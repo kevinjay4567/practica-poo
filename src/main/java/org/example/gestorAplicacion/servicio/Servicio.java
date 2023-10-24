@@ -23,6 +23,11 @@ public class Servicio implements Serializable {
         servicios.add(this);
     }
 
+    public Servicio(String nombre, Double precio) {
+        this.nombre = nombre;
+        this.precio = precio;
+    }
+
     public String getNombre() {
         return nombre;
     }
@@ -37,6 +42,14 @@ public class Servicio implements Serializable {
 
     public void setPrecio(Double precio) {
         this.precio = precio;
+    }
+
+    public int getNochesxEstadia() {
+        return this.nochesxEstadia;
+    }
+
+    public void setNochesxEstadia(int nochesxEstadia) {
+        this.nochesxEstadia = nochesxEstadia;
     }
 
     public String getHora_inicio() {

@@ -33,6 +33,11 @@ public class Pago {
 
     }
 
+    public Double agregarServicio(Servicio servicio) {
+        servicios.add(servicio);
+        return this.getTotal();
+    }
+
     public void setTotal(Double total) {
         this.total = total;
     }
