@@ -1,10 +1,11 @@
 package org.example.gestorAplicacion.servicio;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class Hotel {
+public class Hotel implements Serializable {
     private String nombre;
     private String direccion;
     private List<Double> tarifas = new ArrayList<>();

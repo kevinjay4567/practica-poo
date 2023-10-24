@@ -245,7 +245,7 @@ public class App {
                             System.out.println("Elija la reserva para realizar check-out: ");
                             opcionRes = sc.nextInt();
                             GestionReserva reserCheckout = reservas.get(opcionRes-1);
-                            reserCheckIn.getHabitacion().desocupar();
+                            reserCheckout.getHabitacion().desocupar();
                             reserCheckout.borrarReserva();
                             System.out.println("---------[OK]----------");
                             System.out.println(" !! CheckOut Listo !!");
